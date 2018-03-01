@@ -1,1 +1,32 @@
 
+GET请求实战：
+
+import urllib.request
+url = "http://www.baidu.com/s?wd="
+key = "哈哈"
+key_code = urllib.request.quote(key)
+url_all = url+key_code
+req = urllib.request.Request(url_all)
+data = urllib.request.urlopen(req).read()
+fh = open("","wd")
+fh.write(data)
+fh.close()
+
+2、POST请求实战分析
+思路：
+1）构建表单数据，使用urllib.parse.urlencode对数据进行编码处理
+2）创建Request对象，参数包括URL地址和要传递的数据
+3）add_header模拟爬取
+import urllib.request
+import urllib.parse
+url = ”http://www.iqianyue.com/mypost/“
+postdata = urllib.parse.urlencode({
+"name":"cao",
+"pass":"q2123"
+}).encode('utf-8')
+req = urllib.request.Request(url,postdata)
+req.add_header("")
+data=url.request.urlopen(req).read()
+fandle=open("地址"，”wb“)
+fandle.write(data)
+fandle.close()
