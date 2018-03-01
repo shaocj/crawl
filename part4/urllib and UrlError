@@ -45,4 +45,65 @@ data = urllib.request.urlopen(reg).read()
 1）GET请求：通过URL网址传递信息，可在URL上写上要传递的信息，也可用表单。表单中信息会自动转为URL地址中的数据，通过URL地址传递。
 2）POST请求：可以向服务器提交数据，多用于登陆时
 
+4.6 代理服务器
+ def use_proxy(proxy_addr,url):
+    impor urllib.request
+    proxy = urllib.request.ProxyHandler({'http':proxy_addr})
+    opener = urllib.request.build_opener(proxy,urllib.request.HTTPHandler)
+    urllib.request.install_opener(opener)#创建默认的全局变量
+    data = urllib.request.urlopen(url).read().decode("utf-8")
+    return data
+  proxy_addr="202.75.210.45:7777"
+  data=use_proxy(proxy_addr,"http://www.baidu.com")
+  print(len(data))
+  4.7开启Debuglog
+  httphd=urllib.request.HTTPHandler(debuglevel=1)
+  httpshd=urllib.request.HTTPSHandler(debuglevel=1)
+  opener=urllib.request.build_opener(httphd,httpshd)
+  urllib.request.install_opener(opener)  
+  data=urllib.request.urlopen(”网址“)
+4.8 异常处理神器--URLError and HTTPError
+import urllib.request
+import urllib.error
+try:
+    urllib.request.urlopen("网址")
+except urllib.error.URLError as e:
+    print(e.code)
+    print(e.reason)
+如果是触发了HTTPError
+import urllib.request
+import urllib.error
+try:
+    urllib.request.urlopen("网址")
+except urllib.error.HTTPError as e:
+    print(e.code)
+    print(e.reason)
+改进：
+import urllib.request
+import urllib.error
+try:
+    urllib.request.urlopen("网址")
+except urllib.error.HTTPError as e:
+    print(e.code)
+    print(e.reason)
+except urllib.error.URLError as e:
+     print(e.reason)
+     
+ 改进：
+ 
+ import urllib.request
+import urllib.error
+try:
+    urllib.request.urlopen("网址")
 
+except urllib.error.URLError as e:
+
+     if hasattr(e,"code")
+        print(e.code)
+      if hasattr(e,"reason")
+        print(e.reason)
+     
+ 
+ 
+ 
+ 
