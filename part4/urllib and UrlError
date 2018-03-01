@@ -1,8 +1,48 @@
+4.2
+=======
 #快速使用Urllib爬取网页
 import urllib.request
+
 file = urllib.request.urlopen("http://www.baidu.com")#爬取百度首页并付给变量file
 data = file.read()#读取内容到data
+
 读取内容3种方式：
   1、file.read()#读取文件全部内容，赋给一个字符串变量
   2、file.readlines()#读取文件全部内容，赋给一个列表变量
   3、file.readline()#读取文件一行内容
+
+如何将爬取内容以网页形式保存本地？
+handlte  = open（“本地地址”，“wb”）
+handle.write(data)
+或者使用如下方法：
+filename = urllib.request.urlretrieve("网页地址"，filename=“本地地址”)
+
+其他命令：
+file.getcode()#获取爬取的网页的状态码
+file.geturl()#获取爬去网页的URL地址
+urllib.request.quote/unquote（“网址”）#对网址进行编码和解码
+
+4.3 浏览器的模拟---Headers属性（403错误）
+==============
+两种模拟浏览器网页的设置方法：
+方法一：使用build_opener()修改报头
+import urllib.request
+url=""
+header=("")
+opener = urllib.request.build_opener()
+opener.addheaders = [headers]
+data = opener.open(url).read()
+方法二：使用add_header()添加报头
+import urllib.request
+url=""
+reg = urllib.request.Request(url)
+reg.add_header("")
+data = urllib.request.urlopen(reg).read()
+#data = urllib.request.urlopen("网址"，timeout=30)#
+
+4.5 HTTP协议请求实战
+
+1）GET请求：通过URL网址传递信息，可在URL上写上要传递的信息，也可用表单。表单中信息会自动转为URL地址中的数据，通过URL地址传递。
+2）POST请求：可以向服务器提交数据，多用于登陆时
+
+
