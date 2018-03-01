@@ -1,0 +1,8 @@
+#快速使用Urllib爬取网页
+import urllib.request
+file = urllib.request.urlopen("http://www.baidu.com")#爬取百度首页并付给变量file
+data = file.read()#读取内容到data
+读取内容3种方式：
+  1、file.read()#读取文件全部内容，赋给一个字符串变量
+  2、file.readlines()#读取文件全部内容，赋给一个列表变量
+  3、file.readline()#读取文件一行内容
