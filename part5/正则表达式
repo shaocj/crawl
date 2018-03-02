@@ -5,3 +5,8 @@ python中，一般使用re模块实现python正则表达式
 （4）原子表：
 由【】组成，如【syz】py，在ypython中匹配可以匹配出ypy:[^]表示除了中括号里面的原子均可以匹配
 
+4、贪婪模式及懒惰模式
+import re
+pattern1 = "p.*y"#贪婪模式
+pattren2 = "p.*?y"#懒惰模式
+
