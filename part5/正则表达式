@@ -1,2 +1,8 @@
 
 python中，一般使用re模块实现python正则表达式
+
+crawl/part5/常见的通用字符及含义.PNG
+
+（4）原子表：
+由【】组成，如【syz】py，在ypython中匹配可以匹配出ypy:[^]表示除了中括号里面的原子均可以匹配
+
