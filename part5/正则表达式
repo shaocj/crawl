@@ -1,7 +1,6 @@
 
 python中，一般使用re模块实现python正则表达式
 
-！[常见的]（https://github.com/shaocj/crawl/blob/master/part5/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%80%9A%E7%94%A8%E5%AD%97%E7%AC%A6%E5%8F%8A%E5%90%AB%E4%B9%89.PNG）
 
 （4）原子表：
 由【】组成，如【syz】py，在ypython中匹配可以匹配出ypy:[^]表示除了中括号里面的原子均可以匹配
