@@ -1,0 +1,11 @@
+#cookiejar
+import urllib.request
+import urllib.parse
+url = "http://bbs.chinaunix....."
+postdata = urllib.parse.urlencode({
+"username":"weisuen",
+"password":"aA1111"
+}).encode('utf-8')
+req = urllib.request.Request(url.postdata)
+req.add_header("")
+data = urllib.request.urlopen(req).read()
