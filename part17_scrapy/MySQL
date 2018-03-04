@@ -1,0 +1,25 @@
+在Python3.X中使用pymysql模块操作MySQL数据库：
+#安装pymysql模块
+pip install pymysql3
+#phpStudy集成工具安装MySQL服务器
+#python操作MySQL
+import pymysql
+#连接对应数据库
+conn = pymysql.connect(host="主机名"，user="账号"，passwd="密码"，db="数据库名")
+#通过query执行SQL语句,创建mypydb的数据库
+conn.query("create database mypydb")
+#终端执行show databases;查看数据库
+#在该数据库下创建mytb的表，title可以储存标题，keywd可以储存关键字
+coon.query("create table mytb(title char(20) not null,keywd char(30))")
+#像mytb表中插入一些数据
+conn.query("insert into mytb(title,keywd) values('first title','firstkeywd')")
+#终端中查看mytb的数据使用select * from mytb;的命令
+
+#python中通过select语句查看数据：
+1、通过cursor（）创建对应游标；
+2、通过execute（）执行对应select语句
+3、通过循环遍历对应内容
+cs = conn.cursor()
+cs.execute("select * from mytb")
+for i in cs:
+  print("")
