@@ -9,4 +9,33 @@ python中，一般使用re模块实现python正则表达式
 import re
 pattern1 = "p.*y"#贪婪模式
 pattren2 = "p.*?y"#懒惰模式
+string = "abcdfphp345pythony_py"
+result1 = re.search(pattern1,string)#php345pythony_py
+result2 = re.search(pattern2,string)#php345py
 
+5.3常见正则表达函数
+re.match(pattern,string,flag)
+re.match(pattern,string,flag).span()#设置可以过滤掉一些信息，只留下匹配成功的结果在源字符串中的位置
+re.search(pattren,string)#扫描整个字符串，而match从头
+re.sub(pattren,rep,srting,max)#rep替换string,做多替换max次
+
+5.4常见实例
+pattren = "[a-zA-Z]+://[^\s]*[.com|.cn]"
+string = "<a href='http://www.baidu.com'>百度首页<>/a"
+#result=http://www.baidu.com
+
+匹配电话号码：
+pattren = "\d{4}-\d{7}|\d{3}-\d{8}"
+string = "021-672863653682382265236"
+#result= 021-67282636
+
+匹配电子邮箱地址：
+pattren='\w+([.+-]\w+)*@\w+([.-]\w+)*\.\w+([.-]\w+)*'
+string="<a hbref='http://www.baidu.com'>百度首页</a><br><a href='mailto:c-e+o@
+iqi-anyue.com.cn'>电子邮件地址</a>"
+#result = c-e+o@iqi-anyue.com.cn
+
+5.5什么是cookie
+    设计登陆等操作都会使用到cookie,访问每一互联网页面都是通过HTTP协议进行的，HTTP
+是一无状态协议，所谓的无状态协议即无法维持会话之间状态。cookie和Session保存会话信息。
+cookie保存在客户端。session保存会话信息是保存在服务器端，会给客户端发送SessionID等信息这些保存在Cookie
