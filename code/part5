@@ -8,4 +8,12 @@ postdata = urllib.parse.urlencode({
 }).encode('utf-8')
 req = urllib.request.Request(url.postdata)
 req.add_header("")
-data = urllib.request.urlopen(req).read()
+#http.cookiejar.CookerJar()创建CookieJar对象
+cjar=http.cookiejar.CookieJar()
+#使用HTTPCookieProcessor创建cookie处理器，并以其参数构建opener对象
+opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cjar))
+#将opener安装为全局
+urllib.request.install_opener(opener)
+file=opener.open(req)
+data = file.read()
+
