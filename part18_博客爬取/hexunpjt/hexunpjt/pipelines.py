@@ -8,6 +8,7 @@
 import pymysql
 class HexunpjtPipeline(object):
     def __init(self):
+        #连接对应数据库
         self.coon = pymysql.connect(host="127.0.0.1",user="root",passwd="root",db="hexun")
     def process_item(self, item, spider):
         for j in range(0,len(item["name"])):
