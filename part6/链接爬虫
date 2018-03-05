@@ -1,0 +1,17 @@
+import re
+import urllib.request
+def getlink(url):
+    headers = ""
+    opener = urllib.request.build_opener()
+    opener.addheaders=[headers]
+    urlliib.request.install_opener(opener)
+    file = urllib.request.urlopen(url)
+    data = str(file.read())
+    pat = '(http?://[^\s)";]+\.(\w|/)*)'
+    link = re.compile(pat).findall(data)
+    #link=list(set(link))
+    return link
+  url = "http://blog.csdn.net/"
+  linklist=getlist(url)
+  for link in linklist:
+      print(link[0])
